@@ -1,16 +1,12 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Builder;
+using BlazingSodium.Server.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.Identity.Web;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Linq;
-using BlazingSodium.Server.Persistence;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web;
 
 namespace BlazingSodium.Server
 {
