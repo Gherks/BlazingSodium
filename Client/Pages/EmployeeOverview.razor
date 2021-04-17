@@ -1,0 +1,43 @@
+@page "/employeeoverview"
+@using BlazingSodium.Shared
+@inject HttpClient Http
+
+<h1>Employee Overview</h1>
+
+<p>These are the employees!</p>
+
+@if (Employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div>
+        <label>Name:</label>
+        <input @bind="@InputEmployeeName"/>
+        <label>Age:</label>
+        <input @bind="@InputEmployeeAge"/>
+        <button @onclick="Submit_CreateNewEmployee">Submit</button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>N/A</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Employees)
+            {
+                <tr>
+                    <td>@employee.Name</td>
+                    <td>@employee.Age</td>
+                    <td>-</td>
+                    <button @onclick="() => Remove_Employee(employee.Id)">X</button>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
