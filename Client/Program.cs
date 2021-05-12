@@ -15,7 +15,8 @@ namespace BlazingSodium.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
-            builder.Services.AddHttpClient<EmployeeDataServiceInterface, EmployeeDataService>(client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+            builder.Services.AddHttpClient<EmployeeDataServiceInterface, EmployeeDataService>(client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)) // Local
+            //builder.Services.AddHttpClient<EmployeeDataServiceInterface, EmployeeDataService>(client => client.BaseAddress = new Uri("https://blazingsodiumserver.azurewebsites.net/")) // Azure
                 .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
             builder.Services.AddMsalAuthentication(options =>

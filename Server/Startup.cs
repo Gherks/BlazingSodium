@@ -32,29 +32,6 @@ namespace BlazingSodium.Server
             services.AddControllersWithViews();
             services.AddRazorPages();
             services.AddPersistenceServices();
-
-            services.AddCors(options => options
-                .AddPolicy("ClientCors", builder => builder
-                    //.WithOrigins("https://blazingsodiumclient20210216203650.azurewebsites.net")
-                    .AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()));
-
-            //services.AddCors(options => options
-            //    .AddPolicy("AllowEverything", builder => builder
-            //        .AllowAnyOrigin()
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader()));
-
-            //services.AddCors(options =>
-            //{
-            //    options.AddDefaultPolicy(
-            //        builder =>
-            //        {
-            //            builder.WithOrigins("https://blazingsodiumclient20210216203650.azurewebsites.net",
-            //                                "https://blazingsodiumapi20210216201100.azurewebsites.net");
-            //        });
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,13 +53,10 @@ namespace BlazingSodium.Server
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
 
-            //app.UseCors("AllowEverything");
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
-
-            app.UseCors("ClientCors");
 
             app.UseEndpoints(endpoints =>
             {
